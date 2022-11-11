@@ -1,0 +1,19 @@
+{
+  "name": "sso_url",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir -p dist/src && cp package.json dist/src && cp index.js dist/src && cd dist/src && npm install --production",
+    "package": "npm run build && cd dist/src && zip -r ../code.zip ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-appstream": "^3.48.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
+}
