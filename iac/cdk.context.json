@@ -1,0 +1,59 @@
+{
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
+    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/core:target-partitions": [
+      "aws",
+      "aws-cn"
+    ],
+    "env": {
+      "account": "",
+      "region": "eu-west-1"
+    },
+    "userpoolConfig": {
+      "domainname" : "securedemoenvironmentdomain"
+    },
+    "appStreamConfig": {
+      "imageName": "AppStream-AmazonLinux2-09-21-2022",
+      "userSettings": [
+        {"action": "CLIPBOARD_COPY_FROM_LOCAL_DEVICE", "permission":"ENABLED"},
+        {"action": "CLIPBOARD_COPY_TO_LOCAL_DEVICE", "permission":"DISABLED"},
+        {"action": "FILE_UPLOAD", "permission":"ENABLED"},
+        {"action": "FILE_DOWNLOAD", "permission":"DISABLED"}
+      ]
+    },
+    "vpcConfig": {
+      "cidrBlock": "10.0.0.0/16",
+      "availabilityZones": ["eu-west-1a","eu-west-1b","eu-west-1c"],
+      "subnetCIDRBlocks": {
+        "firewallSubnets": ["10.0.0.0/24","10.0.1.0/24","10.0.2.0/24"],
+        "natSubnets": ["10.0.3.0/24","10.0.4.0/24","10.0.5.0/24"],
+        "appStreamSubnets": ["10.0.6.0/24","10.0.7.0/24","10.0.8.0/24"],
+        "gpuSubnets": ["10.0.9.0/24","10.0.10.0/24","10.0.11.0/24"]
+      },
+      "routeTablesNames": ["firewallRouteTable","natRouteTableAz1","natRouteTableAz2","natRouteTableAz3","privateRouteTableAz1","privateRouteTableAz2","privateRouteTableAz3","internetGatewayRouteTable"]
+    },
+    "allowedDomainsNetworkFirewall": [
+      "",""
+    ],
+    "gpuInstanceConfig": {
+      "gpuInstanceSG": {
+        "egressAllowedCIDR": "0.0.0.0/0",
+        "ingressAllowedCIDR": "0.0.0.0/32"
+      },
+      "blockDeviceMappings": [{
+        "deviceName": "/dev/sda1",
+        "ebs": {
+          "deleteOnTermination": true,
+          "volumeSize": 10,
+          "volumeType": "gp3"
+        }
+      }],
+      "instanceType": "t3.small",
+      "monitoring": true,
+      "gpu_image_id": ""
+    }
+  }

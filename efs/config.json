@@ -1,0 +1,13 @@
+{
+  "SessionStart": {
+    "Executables": [
+       {
+         "Context": "system",
+         "Filename": "/opt/appstream/SessionScripts/efs-mount.sh",
+         "Arguments": "",
+         "S3LogEnabled": true 
+      }
+    ],
+    "WaitingTime": 30
+  } 
+}
