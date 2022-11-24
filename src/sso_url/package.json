@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-appstream": "^3.48.0"
+    "@aws-sdk/client-appstream": "^3.216.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0"

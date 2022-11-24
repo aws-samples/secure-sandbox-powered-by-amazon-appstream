@@ -23,6 +23,7 @@ import * as path from 'path';
 import cdk = require('aws-cdk-lib');
 import { HttpApi } from '@aws-cdk/aws-apigatewayv2';
 import { HttpMethod } from 'aws-cdk-lib/aws-stepfunctions-tasks';
+import { NagSuppressions } from "cdk-nag";
 
 export interface SSOURLProps {
     readonly region: string;
@@ -75,6 +76,8 @@ export class CustomSSOURL extends Construct {
             origin_domain: props.origin_domain,
           },
         });
+
+        NagSuppressions.addResourceSuppressions(lambdaSSOURL, [{id: "AwsSolutions-L1", reason: "Will upgrade to latest node JS version in future release"}]);
 
         /** KMS KEY */
 

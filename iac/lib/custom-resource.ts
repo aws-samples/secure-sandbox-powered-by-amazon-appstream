@@ -17,6 +17,7 @@ import lambda = require('aws-cdk-lib/aws-lambda');
 import { Construct } from 'constructs';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as path from 'path';
+import { NagSuppressions } from "cdk-nag";
 
 export interface MyCustomResourceProps extends cdk.ResourceProps {
   readonly azs: string [];
@@ -56,6 +57,8 @@ export class CustomANFW extends Construct {
       runtime: lambda.Runtime.NODEJS_16_X,
       role: lambdaRoleNetworkFirewallRole,
     });
+
+    NagSuppressions.addResourceSuppressions(lambdaNetworkFirewall, [{id: "AwsSolutions-L1", reason: "Will upgrade to latest node JS version in future release"}]);
 
     const resource = new cdk.CustomResource(this, 'Resource', {
       serviceToken: lambdaNetworkFirewall.functionArn,
