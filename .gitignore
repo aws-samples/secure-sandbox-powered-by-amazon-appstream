@@ -1,0 +1,19 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
+.DS_Store
+bastion-key-pair.pem
+.vscode/launch.json
+dist/**
+dist*/
+dist
+**/build/**
+build/**
+**/.vscode
+iac/cdk.context.json
