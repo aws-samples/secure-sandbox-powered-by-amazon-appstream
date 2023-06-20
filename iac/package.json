@@ -23,7 +23,7 @@
     "@aws-cdk/aws-apigatewayv2": "^1.181.0",
     "@aws-cdk/aws-transfer": "^1.181.0",
     "@aws-cdk/core": "^1.181.0",
-    "aws-cdk-lib": "^2.51.1",
+    "aws-cdk-lib": "^2.80.0",
     "aws-sdk": "^2.1261.0",
     "cdk-nag": "^2.21.10",
     "constructs": "^10.1.168",
